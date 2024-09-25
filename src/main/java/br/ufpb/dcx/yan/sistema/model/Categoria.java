@@ -1,18 +1,17 @@
 package br.ufpb.dcx.yan.sistema.model;
 
 public class Categoria {
-    private String nome;
+    private String nomeCategoria;
 
-    public Categoria(String nome) {
-        this.nome = nome;
+    public Categoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCategoria() {
+        return nomeCategoria;
     }
 
-    @Override
-    public String toString() {
-        return "Categoria{" + "nome='" + nome + '\'' + '}';
+    public void setNomeCategoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
     }
 }

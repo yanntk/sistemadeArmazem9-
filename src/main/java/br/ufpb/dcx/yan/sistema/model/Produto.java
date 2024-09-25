@@ -11,6 +11,7 @@ public class Produto {
         this.categoria = categoria;
     }
 
+    // Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -21,10 +22,5 @@ public class Produto {
 
     public Categoria getCategoria() {
         return categoria;
-    }
-
-    @Override
-    public String toString() {
-        return "Produto{" + "nome='" + nome + '\'' + ", preco=" + preco + ", categoria=" + categoria + '}';
     }
 }

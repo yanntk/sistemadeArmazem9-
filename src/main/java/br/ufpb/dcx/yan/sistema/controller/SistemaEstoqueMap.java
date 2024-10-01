@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.ArrayList;
 
 public class SistemaEstoqueMap implements SistemaEstoqueFacade {
-
     private Map<String, Produto> estoque = new HashMap<>();
 
     @Override
@@ -31,3 +30,4 @@ public class SistemaEstoqueMap implements SistemaEstoqueFacade {
         return new ArrayList<>(estoque.values());
     }
 }
+

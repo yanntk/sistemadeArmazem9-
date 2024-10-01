@@ -1,3 +1,4 @@
+
 package br.ufpb.dcx.yan.sistema.gui;
 
 import br.ufpb.dcx.yan.sistema.controller.SistemaEstoqueFacade;
@@ -9,9 +10,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class JanelaPrincipal extends JFrame {
-
     private SistemaEstoqueFacade sistemaEstoque;
 
     private JTextField nomeField;
@@ -85,18 +86,26 @@ public class JanelaPrincipal extends JFrame {
             nomeField.setText("");
             precoField.setText("");
             categoriaField.setText("");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar o produto. O preço deve ser um número.", "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao adicionar o produto. Verifique os dados.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void listarProdutos() {
-        StringBuilder lista = new StringBuilder();
-        for (Produto p : sistemaEstoque.listarProdutos()) {
-            lista.append("Nome: ").append(p.getNome())
-                    .append(", Preço: ").append(p.getPreco())
-                    .append(", Categoria: ").append(p.getCategoria().getNomeCategoria())
-                    .append("\n");
+        StringBuilder lista = new StringBuilder("Listando produtos:\n\n");
+        List<Produto> produtos = sistemaEstoque.listarProdutos();
+
+        if (produtos.isEmpty()) {
+            lista.append("Nenhum produto para exibir.");
+        } else {
+            for (Produto p : produtos) {
+                lista.append("Nome: ").append(p.getNome())
+                        .append(", Preço: ").append(p.getPreco())
+                        .append(", Categoria: ").append(p.getCategoria().getNomeCategoria())
+                        .append("\n");
+            }
         }
 
         JOptionPane.showMessageDialog(this, lista.toString(), "Lista de Produtos", JOptionPane.INFORMATION_MESSAGE);
